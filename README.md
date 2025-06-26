@@ -16,7 +16,7 @@ Welcome to your project for Tech Camp! You'll be building a flashcards app using
 
 ---
 
-## 🧭 [Overview](#overview)
+## <span id="overview">🧭 Overview</span>
 
 In this project, you’ll:
 - Display a list of flashcards
@@ -28,7 +28,7 @@ In this project, you’ll:
 
 ---
 
-## 🧪 [Setup Instructions](#setup-instructions)
+## <span id="setup-instructions">🧪 Setup Instructions</span>
 
 1. Open this folder in **Cursor IDE**.
 2. Run the following commands in the Terminal:
@@ -44,7 +44,7 @@ If you see a screen with a button that says “Add Card” — you’re in busin
 
 ---
 
-## 🛠 [What You’ll Build](#what-youll-build)
+## <span id="what-youll-build">🛠 What You’ll Build</span>
 
 This app includes:
 
@@ -53,11 +53,11 @@ This app includes:
 ✅ A screen to create new cards  
 ✅ Sample flashcards to get you started
 
-You’ll build the logic behind these features using step-by-step TODOs in the code.
+You’ll complete the app by following TODOs in the code that guide you through building the core features.
 
 ---
 
-## 🧱 [Step-by-Step Guide](#step-by-step-guide)
+## <span id="step-by-step-guide">🧱 Step-by-Step Guide</span>
 
 ### 1. Flip the Flashcard
 ### 🎯 Goal:
@@ -135,7 +135,7 @@ Right now, when you fill out the form and hit Save, your flashcard just prints t
 ### ✅ Part A: Create a Card Object
 📍 File: AddCardScreen.tsx
 - In your save handler, build an object like this: 
-```
+```tsx
 { question: 'your question here', answer: 'your answer here' }
 ```
 - Try logging it to the console
@@ -150,7 +150,7 @@ Right now, your sample cards come from sampleCards.ts, but that’s just a stati
 - Add a function `addCard` in App.tsx that takes a question and answer and updates that list
 - Pass that function to AddCardScreen as a prop
 - Call it inside your save handler
-```
+```tsx
 <Button
   title="Save Card"
   onPress={() => {
@@ -223,7 +223,7 @@ const visibleCards = showLearnedOnly
 | State doesn’t update | Are you calling `setCards([...prev, newCard])`?            |
 
 
-## 🌟 [Stretch Goals](#stretch-goals)
+## <span id="stretch-goals">🌟 Stretch Goals</span>
 
 ### 🟤 Level 1 – Style & Polish
 -  Add custom fonts or colors
@@ -262,7 +262,7 @@ const visibleCards = showLearnedOnly
 
 ---
 
-## 🤖 [Helpful AI Prompts](#helpful-ai-prompts)
+## <span id="helpful-ai-prompts">🤖 Helpful AI Prompts</span>🤖
 
 Try typing these in Cursor’s AI helper pane:
 
@@ -274,7 +274,7 @@ Try typing these in Cursor’s AI helper pane:
 
 ---
 
-## 📚 [Resources & Docs](#resources--docs)
+## <span id="resources--docs">📚 Resources & Docs</span>
 
 - [React Native Docs](https://reactnative.dev/docs/getting-started)
 - [Expo Docs](https://docs.expo.dev/)
@@ -283,7 +283,7 @@ Try typing these in Cursor’s AI helper pane:
 
 ---
 
-## 📌 [React Native Quick Reference](#react-native-quick-reference)
+## <span id="react-native-quick-reference">📌 React Native Quick Reference</span>
 
 ### 🧠 useState Hook
 
@@ -328,7 +328,7 @@ const [text, setText] = useState('');
 ```
 ---
 ### 🔁 Lifting State & Updating a Shared List
-```
+```tsx
 // In App.tsx
 const [cards, setCards] = useState([]);
 
@@ -340,7 +340,7 @@ const addCard = (newCard) => {
 <AddCardScreen addCard={addCard} />
 ```
 
-```
+```tsx
 // In AddCardScreen.tsx
 const handleSave = () => {
   addCard({ question, answer });
