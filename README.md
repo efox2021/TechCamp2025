@@ -16,7 +16,7 @@ Welcome to your project for Tech Camp! You'll be building a flashcards app using
 
 ---
 
-## 🧭 Overview
+## 🧭 [Overview](#overview)
 
 In this project, you’ll:
 - Display a list of flashcards
@@ -28,7 +28,7 @@ In this project, you’ll:
 
 ---
 
-## 🧪 Setup Instructions
+## 🧪 [Setup Instructions](#setup-instructions)
 
 1. Open this folder in **Cursor IDE**.
 2. Run the following commands in the Terminal:
@@ -44,7 +44,7 @@ If you see a screen with a button that says “Add Card” — you’re in busin
 
 ---
 
-## 🛠 What You’ll Build
+## 🛠 [What You’ll Build](#what-youll-build)
 
 This app includes:
 
@@ -57,7 +57,7 @@ You’ll build the logic behind these features using step-by-step TODOs in the c
 
 ---
 
-## 🧱 Step-by-Step Guide
+## 🧱 [Step-by-Step Guide](#step-by-step-guide)
 
 ### 1. Flip the Flashcard
 ### 🎯 Goal:
@@ -223,7 +223,7 @@ const visibleCards = showLearnedOnly
 | State doesn’t update | Are you calling `setCards([...prev, newCard])`?            |
 
 
-## 🌟 Stretch Goals
+## 🌟 [Stretch Goals](#stretch-goals)
 
 ### 🟤 Level 1 – Style & Polish
 -  Add custom fonts or colors
@@ -262,7 +262,7 @@ const visibleCards = showLearnedOnly
 
 ---
 
-## 🤖 Helpful AI Prompts for Cursor
+## 🤖 [Helpful AI Prompts](#helpful-ai-prompts)
 
 Try typing these in Cursor’s AI helper pane:
 
@@ -274,7 +274,7 @@ Try typing these in Cursor’s AI helper pane:
 
 ---
 
-## 📚 Resources & Docs
+## 📚 [Resources & Docs](#resources--docs)
 
 - [React Native Docs](https://reactnative.dev/docs/getting-started)
 - [Expo Docs](https://docs.expo.dev/)
@@ -283,7 +283,7 @@ Try typing these in Cursor’s AI helper pane:
 
 ---
 
-## 📌 React Native Quick Reference
+## 📌 [React Native Quick Reference](#react-native-quick-reference)
 
 ### 🧠 useState Hook
 
@@ -408,4 +408,3 @@ const load = async () => {
 
 ### 🚀 Let’s Build!
 You’ve got a great foundation. Use your creativity, learn from the AI, and don’t be afraid to try something new!
-

@@ -16,7 +16,7 @@ Welcome to your project for Tech Camp! You'll be building a flashcards app using
 
 ---
 
-## 🧭 Overview
+## 🧭 [Overview](#overview)
 
 In this project, you’ll:
 - Display a list of flashcards
@@ -28,7 +28,7 @@ In this project, you’ll:
 
 ---
 
-## 🧪 Setup Instructions
+## 🧪 [Setup Instructions](#setup-instructions)
 
 1. Open this folder in **Cursor IDE**.
 2. Run the following commands in the Terminal:
@@ -44,7 +44,7 @@ If you see a screen with a button that says “Add Card” — you’re in busin
 
 ---
 
-## 🛠 What You’ll Build
+## 🛠 [What You’ll Build](#what-youll-build)
 
 This app includes:
 
@@ -57,7 +57,7 @@ You’ll build the logic behind these features using step-by-step TODOs in the c
 
 ---
 
-## 🧱 Step-by-Step Guide
+## 🧱 [Step-by-Step Guide](#step-by-step-guide)
 
 ### 1. Flip the Flashcard
 ### 🎯 Goal:
@@ -159,6 +159,52 @@ Right now, your sample cards come from sampleCards.ts, but that’s just a stati
 />
 ```
 
+### ✅ Step 5: Mark Cards as “Learned” and Filter Them
+
+Let’s level up your flashcards by letting users keep track of what they’ve already learned!
+
+---
+
+#### ✅ Part A: Add a `learned` Field to New Cards
+
+📍 File: `AddCardScreen.tsx`
+
+- [ ] When calling `addCard`, include this:
+
+```tsx
+addCard({ question, answer, learned: false });
+```
+
+- [ ] Update your types or structure to include `learned`
+
+---
+
+#### ✅ Part B: Let Users Mark a Card as Learned
+
+📍 File: `Flashcard.tsx`
+
+- [ ] Add a **"Mark as Learned"** button below each card
+- [ ] When tapped, it should call a function passed from the parent (e.g., `onMarkLearned`)
+- [ ] Visually indicate learned cards with a ✅ or different background color
+
+---
+
+#### ✅ Part C: Add a Filter
+
+📍 File: `FlashcardScreen.tsx`
+
+- [ ] Add a button or switch labeled “Show Learned Only”
+- [ ] Add a boolean `showLearnedOnly` state
+- [ ] Use `.filter()` on the `cards` list before passing to `FlatList`
+
+```tsx
+const visibleCards = showLearnedOnly
+  ? cards.filter((card) => card.learned)
+  : cards;
+```
+
+---
+
 ### ✅ Part D: Test It!
 - Add a new card using the form
 - Go back to the main screen
@@ -177,7 +223,7 @@ Right now, your sample cards come from sampleCards.ts, but that’s just a stati
 | State doesn’t update | Are you calling `setCards([...prev, newCard])`?            |
 
 
-## 🌟 Stretch Goals
+## 🌟 [Stretch Goals](#stretch-goals)
 
 ### 🟤 Level 1 – Style & Polish
 -  Add custom fonts or colors
@@ -216,7 +262,7 @@ Right now, your sample cards come from sampleCards.ts, but that’s just a stati
 
 ---
 
-## 🤖 Helpful AI Prompts for Cursor
+## 🤖 [Helpful AI Prompts](#helpful-ai-prompts)
 
 Try typing these in Cursor’s AI helper pane:
 
@@ -228,7 +274,7 @@ Try typing these in Cursor’s AI helper pane:
 
 ---
 
-## 📚 Resources & Docs
+## 📚 [Resources & Docs](#resources--docs)
 
 - [React Native Docs](https://reactnative.dev/docs/getting-started)
 - [Expo Docs](https://docs.expo.dev/)
@@ -237,7 +283,7 @@ Try typing these in Cursor’s AI helper pane:
 
 ---
 
-## 📌 React Native Quick Reference
+## 📌 [React Native Quick Reference](#react-native-quick-reference)
 
 ### 🧠 useState Hook
 
@@ -308,6 +354,9 @@ const handleSave = () => {
 />
 ```
 
+### 💬 Tip: If your new data isn’t showing up, check:
+- Did you call setState with a copy of the previous state?
+- Are you passing the state and function down properly?
 ---
 
 ### 💡 Conditional Rendering
