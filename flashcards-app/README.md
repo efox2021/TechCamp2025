@@ -128,7 +128,7 @@ Build a form where users can type a question and answer, and log the result when
 
 ---
 
-### 🧱 Step 4: Make Your Flashcard Save to the List 
+### Step 4: Make Your Flashcard Save to the List 
 ### 🎯 Goal:
 Right now, when you fill out the form and hit Save, your flashcard just prints to the console. Let’s fix that!
 
@@ -148,7 +148,10 @@ Right now, your sample cards come from sampleCards.ts, but that’s just a stati
 ### ✅ Part C: Share Your New Card
 - Move your card list (useState) into App.tsx
 - Add a function `addCard` in App.tsx that takes a question and answer and updates that list
-- Pass that function to AddCardScreen as a prop
+- Pass that function to AddCardScreen as a prop (don't forget to update the `RootStackParamList`)
+  - You can pass the method parameter in the route params like this: `route={{ addCard }}`
+  - Add the route param in your AddCardScreen file (`AddCardScreen({ route })`)
+  - In AddCardScreen, destructure it from the route: `const { addCard } = route.params;`
 - Call it inside your save handler
 ```tsx
 <Button
@@ -159,11 +162,23 @@ Right now, your sample cards come from sampleCards.ts, but that’s just a stati
 />
 ```
 
-### ✅ Step 5: Mark Cards as “Learned” and Filter Them
+### ✅ Part D: Reset Form State and Navigate Back
+- Create a `handleSave` method that calls `addCard` and resets form state
+- Add `navigation` prop to AddCardScreen component
+- Call `navigation.goBack()` to return to FlashcardScreen
+
+### 🤖 AI Prompt Ideas
+- 💬 “How do I update the RootStackParamList navigation props for a screen? How do I pass those props?”
+- 💬 “How do I go back using React Navigation?”
+
+- 💬 “How do I use the navigation object from a screen in react native?”
+
+##
+
+### Step 5: Mark Cards as “Learned” and Filter Them
 
 Let’s level up your flashcards by letting users keep track of what they’ve already learned!
 
----
 
 #### ✅ Part A: Add a `learned` Field to New Cards
 
@@ -185,7 +200,7 @@ addCard({ question, answer, learned: false });
 
 - [ ] Add a **"Mark as Learned"** button below each card
 - [ ] When tapped, it should call a function passed from the parent (e.g., `onMarkLearned`)
-- [ ] Visually indicate learned cards with a ✅ or different background color
+- [ ] Visually indicate learned cards with a ✅ or different background color (leverage your state for toggling styling)
 
 ---
 
