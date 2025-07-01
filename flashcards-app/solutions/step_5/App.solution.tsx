@@ -60,7 +60,17 @@ export default function App() {
           )}
         </Stack.Screen>
         <Stack.Screen name="AddCard">
-          {(props) => <AddCardScreen {...props} route={{ addCard }} />}
+          {(props) => (
+            <AddCardScreen
+              {...props}
+              route={{
+                ...props.route,
+                params: {
+                  addCard,
+                },
+              }}
+            />
+          )}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
