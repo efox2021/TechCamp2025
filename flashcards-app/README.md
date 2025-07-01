@@ -155,6 +155,9 @@ When a student taps on a flashcard, it should flip between showing the question 
 - Use `TouchableOpacity` to toggle flipped
 - Conditionally render the question or answer based on flipped
 
+
+💡 **Design Tip:** This component already uses our shared design system! Feel free to customize the colors, fonts, and spacing in `styles/theme.ts` to make it your own.
+
 > ### 🤖 AI Prompt Suggestions
 >   - 💬 "Add a useState boolean to toggle between two views in a React Native component."
 >  - 💬 "Make this flashcard component flip between question and answer when tapped."
