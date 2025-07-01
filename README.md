@@ -65,12 +65,12 @@ A great app is not just functional, but also looks and feels good! Here's a simp
 ### Color Palette
 | Name         | Example      | Value         |
 |--------------|--------------|--------------|
-| Primary      | ![#4F8EF7](https://via.placeholder.com/15/4F8EF7/000000?text=+) | `#4F8EF7` |
-| Accent       | ![#FFD166](https://via.placeholder.com/15/FFD166/000000?text=+) | `#FFD166` |
-| Background   | ![#F6F7FB](https://via.placeholder.com/15/F6F7FB/000000?text=+) | `#F6F7FB` |
-| Card         | ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+) | `#FFFFFF` |
-| Text         | ![#22223B](https://via.placeholder.com/15/22223B/000000?text=+) | `#22223B` |
-| Muted        | ![#BFC6D1](https://via.placeholder.com/15/BFC6D1/000000?text=+) | `#BFC6D1` |
+| Primary      | ![#4F8EF7](https://placehold.co/15x15/4F8EF7/4F8EF7.png) | `#4F8EF7` |
+| Accent       | ![#FFD166](https://placehold.co/15x15/FFD166/FFD166.png) | `#FFD166` |
+| Background   | ![#F6F7FB](https://placehold.co/15x15/F6F7FB/F6F7FB.png) | `#F6F7FB` |
+| Card         | ![#FFFFFF](https://placehold.co/15x15/FFFFFF/FFFFFF.png) | `#FFFFFF` |
+| Text         | ![#22223B](https://placehold.co/15x15/22223B/22223B.png) | `#22223B` |
+| Muted        | ![#BFC6D1](https://placehold.co/15x15/BFC6D1/BFC6D1.png) | `#BFC6D1` |
 
 ### Typography
 - **Font Family:** System default (or try `Avenir`, `Helvetica Neue`, or `Roboto`)
