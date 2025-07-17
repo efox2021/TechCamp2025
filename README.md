@@ -143,32 +143,9 @@ export const theme = StyleSheet.create({
 
 ---
 
-### 1. Show the Flashcards List 
-### 🎯 Goal:
-Render a scrollable list of flashcards from sample data using FlatList.
-
-📍 File: `screens/FlashcardScreen.tsx`
-
--  Import `FlatList`, `Flashcard`, and `sampleCards`
--  Render each flashcard using the data
--  Use `question` and `answer` as props
-
-### 🤖 AI Prompt Suggestions
-- 💬 "Render a list of items in React Native using FlatList."
-- 💬 "Pass props into a child component in a FlatList."
-
-### ⚠️ Common Issues & Fixes
-| Issue                          | Cause                                               | Fix                                                             |
-| ------------------------------ | --------------------------------------------------- | --------------------------------------------------------------- |
-| ❌ Nothing is showing           | `FlatList` isn't rendered or `data` is empty        | Make sure `sampleCards` is imported and returned                |
-| ❌ Red error about keyExtractor | You forgot `index.toString()` or used the wrong key | Use `keyExtractor={(item, index) => index.toString()}`          |
-| ❌ Flashcard error              | Flashcard file isn't imported, or props are wrong   | Confirm `Flashcard` is imported and passed `question`, `answer` |
-
----
-
 ## <span id="step-by-step-guide">🧱 Step-by-Step Guide</span>
 
-### 2. Flip the Flashcard
+### 1. Flip the Flashcard
 ### 🎯 Goal:
 When a student taps on a flashcard, it should flip between showing the question and the answer.  
 
@@ -191,6 +168,29 @@ When a student taps on a flashcard, it should flip between showing the question 
 | ❌ `useState` is not defined           | Forgot to import it                                                                    | Add `import { useState } from 'react';` at the top                                  |
 | ❌ Nothing happens when I tap the card | `onPress` might not be set correctly or the component is not inside `TouchableOpacity` | Wrap everything in `<TouchableOpacity onPress={...}>`                               |
 | ❌ Always shows the same value         | The conditional may be incorrect or state isn't toggling                               | Check for `{flipped ? answer : question}` and that `setFlipped(!flipped)` is called |
+
+---
+
+### 2. Show the Flashcards List 
+### 🎯 Goal:
+Render a scrollable list of flashcards from sample data using FlatList.
+
+📍 File: `screens/FlashcardScreen.tsx`
+
+-  Import `FlatList`, `Flashcard`, and `sampleCards`
+-  Render each flashcard using the data
+-  Use `question` and `answer` as props
+
+### 🤖 AI Prompt Suggestions
+- 💬 "Render a list of items in React Native using FlatList."
+- 💬 "Pass props into a child component in a FlatList."
+
+### ⚠️ Common Issues & Fixes
+| Issue                          | Cause                                               | Fix                                                             |
+| ------------------------------ | --------------------------------------------------- | --------------------------------------------------------------- |
+| ❌ Nothing is showing           | `FlatList` isn't rendered or `data` is empty        | Make sure `sampleCards` is imported and returned                |
+| ❌ Red error about keyExtractor | You forgot `index.toString()` or used the wrong key | Use `keyExtractor={(item, index) => index.toString()}`          |
+| ❌ Flashcard error              | Flashcard file isn't imported, or props are wrong   | Confirm `Flashcard` is imported and passed `question`, `answer` |
 
 ---
 
@@ -229,38 +229,59 @@ Right now, when you fill out the form and hit Save, your flashcard just prints t
 ```
 - Try logging it to the console
 
-### ✅ Part B: Think About Where the Cards Live
-Right now, your sample cards come from sampleCards.ts, but that's just a static file.
-- Where would you need to put the card list so both screens can see it?
-- How can you update it?
+### ✅ Part B: Keep Cards State in FlashcardScreen (Simpler!)
+📍 File: FlashcardScreen.tsx
+- Replace the static `sampleCards` with a `useState` for cards
+- Start with the sample cards: `const [cards, setCards] = useState(sampleCards)`
+- Create an `addCard` function that adds a new card to the list
 
-### ✅ Part C: Share Your New Card
-- Move your card list (useState) into App.tsx
-- Add a function `addCard` in App.tsx that takes a question and answer and updates that list
-- Pass that function to AddCardScreen as a prop (don't forget to update the `RootStackParamList`)
-  - You can pass the method parameter in the route params like this: `route={{ addCard }}`
-  - Add the route param in your AddCardScreen file (`AddCardScreen({ route })`)
-  - In AddCardScreen, destructure it from the route: `const { addCard } = route.params;`
-- Call it inside your save handler
+### ✅ Part C: Pass the Function to AddCardScreen
+In the `App.tsx` file, update the RootStackParamList
 ```tsx
+AddCard: { addCard: (card: FlashcardType) => void };
+```
+
+📍 File: FlashcardScreen.tsx
+- When navigating to AddCardScreen, pass the `addCard` function:
+```tsx
+navigation.navigate('AddCard', { addCard: addCard })
+```
+
+
+### ✅ Part D: Use the Add Card Method in the AddCardScreen Save Button
+📍 File: AddCardScreen.tsx
+- Get the `addCard` function from route params: `const { addCard } = route.params`
+- Call it in your save handler with the new card object
+
+### ✅ Part E: Reset Form and Go Back
+📍 File: AddCardScreen.tsx
+- Create a `handleSave` function that calls `addCard` and resets the form
+- Call `navigation.goBack()` to return to the flashcards list
+
+```tsx
+const handleSave = () => {
+  addCard({ question, answer });
+  navigation.goBack();
+};
+
 <Button
   title="Save Card"
-  onPress={() => {
-    addCard({ question, answer });  
-  }}
+  onPress={handleSave}
 />
 ```
 
-### ✅ Part D: Reset Form State and Navigate Back
-- Create a `handleSave` method that calls `addCard` and resets form state
-- Add `navigation` prop to AddCardScreen component
-- Call `navigation.goBack()` to return to FlashcardScreen
+Should the flashcard be saved if you didn't enter a question value or answer value? No!
+- Create an `isDisabled` method that checks that the question/answer values are valid
+- Pass that method into your button's `disabled` prop 
+```tsx
+disabled={isDisabled}
+```
+- Bonus: Add disabled vs. enabled styling to your button to give the user visual feedback
 
 ### 🤖 AI Prompt Ideas
-> - 💬 "How do I update the RootStackParamList navigation props for a screen? How do I pass those props?"
+> - 💬 "How do I pass a function as a navigation parameter in React Navigation?"
+> - 💬 "How do I get parameters from route.params in a React Native screen?"
 > - 💬 "How do I go back using React Navigation?"
-
-> - 💬 "How do I use the navigation object from a screen in react native?"
 
 ##
 
@@ -279,7 +300,7 @@ Let's level up your flashcards by letting users keep track of what they've alrea
 addCard({ question, answer, learned: false });
 ```
 
-- [ ] Update your types or structure to include `learned`
+- [ ] Update your FlashcardType to include `learned`
 
 ---
 
@@ -290,6 +311,7 @@ addCard({ question, answer, learned: false });
 - [ ] Add a **"Mark as Learned"** button below each card
 - [ ] When tapped, it should call a function passed from the parent (e.g., `onMarkLearned`)
 - [ ] Visually indicate learned cards with a ✅ or different background color (leverage your state for toggling styling)
+- Have fun with styling and design!
 
 ---
 
@@ -430,30 +452,31 @@ const [text, setText] = useState('');
 />
 ```
 ---
-### 🔁 Lifting State & Updating a Shared List
+### 🔁 Passing Functions via Navigation
 ```tsx
-// In App.tsx
-const [cards, setCards] = useState([]);
+// In FlashcardScreen.tsx
+const [cards, setCards] = useState(sampleCards);
 
 const addCard = (newCard) => {
   setCards((prevCards) => [...prevCards, newCard]);
 };
 
-// Pass addCard as a prop to another screen:
-<AddCardScreen addCard={addCard} />
+// Pass addCard via navigation:
+navigation.navigate('AddCard', { addCard: addCard });
 ```
 
 ```tsx
 // In AddCardScreen.tsx
+const { addCard } = route.params;
+
 const handleSave = () => {
   addCard({ question, answer });
+  navigation.goBack();
 };
 
 <Button
   title="Save Card"
-  onPress={() => {
-    handleSave()
-  }}
+  onPress={handleSave}
 />
 ```
 

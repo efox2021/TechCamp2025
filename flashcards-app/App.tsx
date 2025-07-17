@@ -11,7 +11,7 @@ export type FlashcardType = {
 };
 
 export type RootStackParamList = {
-  Flashcards: { cards: FlashcardType[] };
+  Flashcards: undefined;
   AddCard: undefined;
 };
 
@@ -24,7 +24,6 @@ export default function App() {
         <Stack.Screen 
           name="Flashcards" 
           component={FlashcardScreen}
-          initialParams={{ cards: sampleCards }}
         />
         <Stack.Screen name="AddCard" component={AddCardScreen} />
       </Stack.Navigator>
