@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+// Import our shared design system
+import { theme, colors } from '../styles/theme';
 
 interface FlashcardProps {
   question: string;
@@ -25,21 +27,15 @@ const Flashcard: React.FC<FlashcardProps> = ({ question, answer }) => {
   );
 };
 
+// Using our shared design system - feel free to customize these!
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 10,
-    elevation: 3,
-    margin: 10,
+    ...theme.card, // This applies our shared card styles
+    margin: 10, // Additional custom margin for this component
   },
   text: {
-    fontSize: 18,
-    textAlign: 'center',
+    ...theme.text, // This applies our shared text styles
+    textAlign: 'center', // Additional custom alignment for this component
   },
 });
 
