@@ -3,9 +3,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FlashcardScreen from './screens/FlashcardScreen';
 import AddCardScreen from './screens/AddCardScreen';
+import sampleCards from './data/sampleCards';
+
+export type FlashcardType = {
+  question: string;
+  answer: string;
+};
 
 export type RootStackParamList = {
-  Flashcards: undefined;
+  Flashcards: { cards: FlashcardType[] };
   AddCard: undefined;
 };
 
@@ -15,7 +21,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Flashcards">
-        <Stack.Screen name="Flashcards" component={FlashcardScreen} />
+        <Stack.Screen 
+          name="Flashcards" 
+          component={FlashcardScreen}
+          initialParams={{ cards: sampleCards }}
+        />
         <Stack.Screen name="AddCard" component={AddCardScreen} />
       </Stack.Navigator>
     </NavigationContainer>
