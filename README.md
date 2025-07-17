@@ -143,9 +143,32 @@ export const theme = StyleSheet.create({
 
 ---
 
+### 1. Show the Flashcards List 
+### 🎯 Goal:
+Render a scrollable list of flashcards from sample data using FlatList.
+
+📍 File: `screens/FlashcardScreen.tsx`
+
+-  Import `FlatList`, `Flashcard`, and `sampleCards`
+-  Render each flashcard using the data
+-  Use `question` and `answer` as props
+
+### 🤖 AI Prompt Suggestions
+- 💬 "Render a list of items in React Native using FlatList."
+- 💬 "Pass props into a child component in a FlatList."
+
+### ⚠️ Common Issues & Fixes
+| Issue                          | Cause                                               | Fix                                                             |
+| ------------------------------ | --------------------------------------------------- | --------------------------------------------------------------- |
+| ❌ Nothing is showing           | `FlatList` isn't rendered or `data` is empty        | Make sure `sampleCards` is imported and returned                |
+| ❌ Red error about keyExtractor | You forgot `index.toString()` or used the wrong key | Use `keyExtractor={(item, index) => index.toString()}`          |
+| ❌ Flashcard error              | Flashcard file isn't imported, or props are wrong   | Confirm `Flashcard` is imported and passed `question`, `answer` |
+
+---
+
 ## <span id="step-by-step-guide">🧱 Step-by-Step Guide</span>
 
-### 1. Flip the Flashcard
+### 2. Flip the Flashcard
 ### 🎯 Goal:
 When a student taps on a flashcard, it should flip between showing the question and the answer.  
 
@@ -168,29 +191,6 @@ When a student taps on a flashcard, it should flip between showing the question 
 | ❌ `useState` is not defined           | Forgot to import it                                                                    | Add `import { useState } from 'react';` at the top                                  |
 | ❌ Nothing happens when I tap the card | `onPress` might not be set correctly or the component is not inside `TouchableOpacity` | Wrap everything in `<TouchableOpacity onPress={...}>`                               |
 | ❌ Always shows the same value         | The conditional may be incorrect or state isn't toggling                               | Check for `{flipped ? answer : question}` and that `setFlipped(!flipped)` is called |
-
----
-
-### 2. Show the Flashcards List 
-### 🎯 Goal:
-Render a scrollable list of flashcards from sample data using FlatList.
-
-📍 File: `screens/FlashcardScreen.tsx`
-
--  Import `FlatList`, `Flashcard`, and `sampleCards`
--  Render each flashcard using the data
--  Use `question` and `answer` as props
-
-### 🤖 AI Prompt Suggestions
-- 💬 "Render a list of items in React Native using FlatList."
-- 💬 "Pass props into a child component in a FlatList."
-
-### ⚠️ Common Issues & Fixes
-| Issue                          | Cause                                               | Fix                                                             |
-| ------------------------------ | --------------------------------------------------- | --------------------------------------------------------------- |
-| ❌ Nothing is showing           | `FlatList` isn't rendered or `data` is empty        | Make sure `sampleCards` is imported and returned                |
-| ❌ Red error about keyExtractor | You forgot `index.toString()` or used the wrong key | Use `keyExtractor={(item, index) => index.toString()}`          |
-| ❌ Flashcard error              | Flashcard file isn't imported, or props are wrong   | Confirm `Flashcard` is imported and passed `question`, `answer` |
 
 ---
 
