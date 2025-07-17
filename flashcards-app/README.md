@@ -31,17 +31,89 @@ In this project, you'll:
 
 ## <span id="setup-instructions">🧪 Setup Instructions</span>
 
-1. Open this folder in **Cursor IDE**.
-2. Run the following commands in the Terminal:
+### 📋 Prerequisites (Linux)
 
+Before you start, make sure you have these installed on your Linux machine:
+
+#### 1. **Node.js & npm**
 ```bash
-npm install
-npx expo start
+# Check if Node.js is installed
+node --version
+npm --version
+
+# Required: Node.js 18.x or 20.x (for Expo SDK 53)
+# Recommended: Node.js 20.x LTS
+
+# If not installed, install via package manager:
+# Ubuntu/Debian:
+sudo apt update
+sudo apt install nodejs npm
+
+# Or download from https://nodejs.org/ (choose LTS version)
+
+# If you need to switch Node.js versions, use nvm:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+nvm install 20
+nvm use 20
 ```
 
-3. Use **web preview** or connect your phone via the Expo Go app.
+#### 2. **Git** (for version control)
+```bash
+# Check if Git is installed
+git --version
+
+# If not installed:
+sudo apt install git  # Ubuntu/Debian
+```
+
+#### 3. **Expo CLI** (optional but recommended)
+```bash
+npm install -g @expo/cli
+```
+
+#### 4. **Expo Go App** (for testing on your phone)
+- Download from Google Play Store or App Store
+- This lets you test your app on your phone
+
+---
+
+### 🚀 Getting Started
+
+1. **Open the project in Cursor IDE:**
+   ```bash
+   # Navigate to your project folder
+   cd /path/to/flashcards-app
+   
+   # Open in Cursor
+   cursor .
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npx expo start
+   ```
+
+4. **View your app:**
+   - **Web Preview:** Click the "w" key in the terminal or press "Run on web"
+   - **Phone Testing:** Scan the QR code with Expo Go app on your phone
+   - **Terminal Options:** Press "a" for Android emulator, "i" for iOS simulator
 
 If you see a screen with a button that says "Add Card" — you're in business!
+
+### 🔧 Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| `node: command not found` | Install Node.js from [nodejs.org](https://nodejs.org/) |
+| `npm: command not found` | Node.js installation includes npm |
+| Permission errors | Use `sudo` for system-wide installations |
+| Expo CLI not found | Run `npm install -g @expo/cli` |
+| QR code not working | Make sure your phone and computer are on the same WiFi network |
 
 ---
 
