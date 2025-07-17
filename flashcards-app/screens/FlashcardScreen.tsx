@@ -5,16 +5,17 @@ import { View, Button, Text } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../App';
 // import Flashcard from '../components/Flashcard';
-// import sampleCards from '../data/sampleCards';
 
-const FlashcardScreen: React.FC<
-  NativeStackScreenProps<RootStackParamList, 'Flashcards'>
-> = ({ navigation }) => {
+type Props = NativeStackScreenProps<RootStackParamList, 'Flashcards'>;
+
+const FlashcardScreen: React.FC<Props> = ({ navigation, route }) => {
+  const { cards } = route.params;
+
   return (
     <View style={{ flex: 1, paddingTop: 50 }}>
       <Button title="Add Card" onPress={() => navigation.navigate('AddCard')} />
       
-      {/* TODO: Render Flashcard components using FlatList and sampleCards */}
+      {/* TODO: Render Flashcard components using FlatList and sample cards (passed in as a parameter from App.tsx) */}
       <Text style={{ textAlign: 'center', marginTop: 20 }}>
         No flashcards yet – start building!
       </Text>
